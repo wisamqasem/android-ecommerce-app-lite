@@ -54,7 +54,7 @@ class CategoriesActivity : BaseActivity(), CategoriesContract.ICategoriesView {
     }
 
     override fun categoriesLoaded(categories: ArrayList<Category>) {
-        this.categories.addAll(categories!!)
+        this.categories.addAll(categories)
         viewAdapter.notifyDataSetChanged();
     }
 

@@ -55,6 +55,7 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
                 if (!checkForExistingProduct(product.id)) {
                     App.instance.shoppingCartList.add(product)
                     Toast.makeText(this, getString(R.string.product_added_to_cart), Toast.LENGTH_SHORT).show()
+                    setCount(App.instance.shoppingCartList.size.toString())
                 } else {
                     Toast.makeText(this, getString(R.string.product_already_on_cart), Toast.LENGTH_SHORT).show()
                 }

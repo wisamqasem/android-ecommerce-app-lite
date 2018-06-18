@@ -19,10 +19,13 @@ class ShoppingCartActivity : BaseActivity(), ShoppingCartContract.IShoppingCartV
     private lateinit var presenter: ShoppingCartPresenter
     private lateinit var products: ArrayList<Product>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_shopping_cart, content_container)
         setupViewItems()
+
+        supportActionBar!!.title = getString(R.string.shopping_cart)
     }
 
     private fun setupViewItems() {
@@ -33,6 +36,9 @@ class ShoppingCartActivity : BaseActivity(), ShoppingCartContract.IShoppingCartV
 
         shopping_cart_recycler.layoutManager = LinearLayoutManager(this)
         shopping_cart_recycler.adapter = ShoppingCartAdapter(this, products)
+
+        shopping_cart_items_number.text = getString(R.string._items, products.size)
+        shopping_cart_subtotal.text = getString(R.string.subtotal, presenter.sum.toString())
     }
 
     override fun onResume() {
@@ -42,6 +48,7 @@ class ShoppingCartActivity : BaseActivity(), ShoppingCartContract.IShoppingCartV
 
     override fun shoppingCartLoaded(products: ArrayList<Product>) {
         this.products.addAll(products)
+        shopping_cart_items_number.text = getString(R.string._items, products.size)
         this.shopping_cart_recycler.adapter.notifyDataSetChanged()
     }
 

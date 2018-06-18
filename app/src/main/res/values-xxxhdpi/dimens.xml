@@ -8,6 +8,7 @@
     <dimen name="row_category_height">150dp</dimen>
     <dimen name="row_product_height">300dp</dimen>
     <dimen name="row_product_home_height">200dp</dimen>
+    <dimen name="row_shopping_cart_image_height">100dp</dimen>
     <dimen name="row_category_margin">10dp</dimen>
     <dimen name="gallery_height">300dp</dimen>
     <dimen name="margin">10dp</dimen>

@@ -38,6 +38,7 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.content_home, content_container)
         setupViewItems()
+        supportActionBar!!.title = getString(R.string.instamobile)
     }
 
     override fun onResume() {
@@ -87,7 +88,7 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
 
 
     override fun categoriesLoaded(categories: ArrayList<Category>) {
-        this.categories.addAll(categories!!)
+        this.categories.addAll(categories)
         categoriesAdapter.notifyDataSetChanged();
     }
 

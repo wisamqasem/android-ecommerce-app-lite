@@ -9,10 +9,16 @@ import java.util.*
 class ShoppingCartPresenter(private val shoppingCartView: ShoppingCartContract.IShoppingCartView) : ShoppingCartContract.IShoppingCartPresenter {
 
 
+    public var sum :Int = 0;
+
     override fun load() {
         object : AsyncTask<Void, Void, ArrayList<Product>>() {
 
             override fun doInBackground(vararg voids: Void): ArrayList<Product> {
+
+                App.instance.shoppingCartList.forEach {
+                    sum = (sum + it.price)
+                }
                 return App.instance.shoppingCartList
             }
 
@@ -22,9 +28,6 @@ class ShoppingCartPresenter(private val shoppingCartView: ShoppingCartContract.I
             }
         }.execute()
     }
-
-
-
 
 
 }
