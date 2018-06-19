@@ -94,8 +94,8 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            view_all_products_btn.id -> ProductsActivity.open(this);
-            view_collection_btn.id -> ProductsActivity.open(this);
+            view_all_products_btn.id -> ProductsActivity.open(this,"Dresses");
+            view_collection_btn.id -> ProductsActivity.open(this, "Woman Watches");
             search_btn.id -> SearchActivity.open(this);
         }
 

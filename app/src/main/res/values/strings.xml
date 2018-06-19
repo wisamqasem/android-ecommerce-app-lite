@@ -11,7 +11,7 @@
     <string name="search">Search</string>
     <string name="my_cart">My Cart</string>
     <string name="my_account">My Account</string>
-    <string name="price">$%1$s</string>
+    <string name="price">$%1$d</string>
     <string name="buy_now">Buy Now</string>
     <string name="view_all">View All</string>
     <string name="username_or_e_mail">Username or e-mail</string>
@@ -29,4 +29,5 @@
     <string name="product_already_on_cart">Product already on Cart</string>
     <string name="shopping_cart">Shopping Cart</string>
     <string name="instamobile">Instamobile</string>
+    <string name="categories">Categories</string>
 </resources>

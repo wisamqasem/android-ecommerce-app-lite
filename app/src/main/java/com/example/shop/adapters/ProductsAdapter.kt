@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso
 import java.util.*
 
 
-open class ProductsAdapter(private val context: Context, private val products: ArrayList<Product>) : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
+open class ProductsAdapter(private val context: Context, public var products: ArrayList<Product>) : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -26,7 +26,7 @@ class HomeCategoriesAdapter(private val context: Context, private val categories
         holder.name.text = currentItem.name
         Picasso.get().load(currentItem.imageUrl).into(holder.image)
 
-        holder.itemView.setOnClickListener { ProductsActivity.open(context) }
+        holder.itemView.setOnClickListener { ProductsActivity.open(context, currentItem.name) }
     }
 
     override fun getItemCount(): Int {

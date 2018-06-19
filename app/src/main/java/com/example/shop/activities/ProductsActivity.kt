@@ -27,6 +27,8 @@ class ProductsActivity : BaseActivity(), ProductsContract.IProductsView {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
+
+        supportActionBar!!.title = intent.getStringExtra(KEY_CATEGORY_NAME)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -52,8 +54,10 @@ class ProductsActivity : BaseActivity(), ProductsContract.IProductsView {
     }
 
     companion object {
-        fun open(context: Context) {
+        private const val KEY_CATEGORY_NAME = "category_name"
+        fun open(context: Context, name: String) {
             val intent = Intent(context, ProductsActivity::class.java)
+            intent.putExtra(KEY_CATEGORY_NAME, name)
             context.startActivity(intent)
         }
     }
