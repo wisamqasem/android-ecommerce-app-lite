@@ -30,4 +30,8 @@
     <string name="shopping_cart">Shopping Cart</string>
     <string name="instamobile">Instamobile</string>
     <string name="categories">Categories</string>
+    <string name="signup">Sign Up</string>
+    <string name="search_products">Search Products</string>
+    <string name="view_collection">View Collection</string>
+    <string name="description">Description</string>
 </resources>

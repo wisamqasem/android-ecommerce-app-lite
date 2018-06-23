@@ -16,18 +16,18 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintTop_toBottomOf="@id/product_image" />
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/product_price"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:textColor="@color/price_color"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:textColor="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@id/product_name" />
 
 </android.support.constraint.ConstraintLayout>

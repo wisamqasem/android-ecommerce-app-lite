@@ -9,15 +9,15 @@ class SearchFilter(var adapter: SearchAdapter, private var filterList: ArrayList
 
     override fun performFiltering(constraint: CharSequence?): FilterResults {
         val results = Filter.FilterResults()
-
+        var noSpaces: CharSequence = constraint!!.trim()
         //CHECK CONSTRAINT VALIDITY
-        if (constraint != null && constraint.isNotEmpty()) {
+        if (noSpaces != null && noSpaces.isNotEmpty()) {
             //CHANGE TO UPPER
             //STORE OUR FILTERED PLAYERS
             val filteredPlayers = ArrayList<Product>()
             for (i in 0 until filterList!!.size) {
                 //CHECK
-                if (filterList!![i].name.toUpperCase().contains(constraint.toString().toUpperCase())) {
+                if (filterList!![i].name.toUpperCase().contains(noSpaces.toString().toUpperCase())) {
                     //ADD PLAYER TO FILTERED PLAYERS
                     filteredPlayers.add(filterList!![i])
                 }

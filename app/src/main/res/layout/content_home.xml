@@ -11,13 +11,14 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".activities.BaseActivity">
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/search_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@mipmap/ic_search_white"
             android:gravity="center"
-            android:text="Search Products"
+            android:text="@string/search_products"
+            android:textAllCaps="false"
             android:textColor="@android:color/white" />
 
         <android.support.v7.widget.RecyclerView
@@ -89,10 +90,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="View Collection"
-            android:textColor="@android:color/white"
+            android:text="@string/view_collection"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:theme="@style/Instamobile.Button"
             app:layout_constraintTop_toBottomOf="@id/products_recycler_new" />
 
     </android.support.constraint.ConstraintLayout>
