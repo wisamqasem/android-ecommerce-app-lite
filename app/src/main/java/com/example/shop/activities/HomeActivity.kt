@@ -15,6 +15,7 @@ import com.example.shop.contracts.ProductsContract
 import com.example.shop.entities.Category
 import com.example.shop.entities.Product
 import com.example.shop.helpers.CenterZoomLayoutManager
+import com.example.shop.helpers.ItemDecoration
 import com.example.shop.presenter.CategoriesPresenter
 import com.example.shop.presenter.ProductsPresenter
 import kotlinx.android.synthetic.main.activity_base.*
@@ -62,8 +63,11 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
         categoriesPresenter.load()
 
         productsAdapter = HomeProductsAdapter(this, this.products)
-        products_recycler.layoutManager = CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        products_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         products_recycler.adapter = productsAdapter
+        products_recycler.scrollToPosition(0)
+        products_recycler.addItemDecoration(ItemDecoration(100, 0))
+
 
         products_recycler_new.layoutManager = GridLayoutManager(this, 2)
         products_recycler_new.adapter = productsAdapter
@@ -94,12 +98,12 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            view_all_products_btn.id -> ProductsActivity.open(this,"Dresses");
+            view_all_products_btn.id -> ProductsActivity.open(this, "Dresses");
             view_collection_btn.id -> ProductsActivity.open(this, "Woman Watches");
             search_btn.id -> SearchActivity.open(this);
         }
 
-        this.overridePendingTransition(0,0)
+        this.overridePendingTransition(0, 0)
     }
 
 
