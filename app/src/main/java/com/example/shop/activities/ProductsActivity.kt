@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.example.shop.R
 import com.example.shop.adapters.ProductsAdapter
 import com.example.shop.contracts.ProductsContract
@@ -25,15 +24,8 @@ class ProductsActivity : BaseActivity(), ProductsContract.IProductsView {
         layoutInflater.inflate(R.layout.activity_products, content_container)
         setupViewItems()
 
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-
         supportActionBar!!.title = intent.getStringExtra(KEY_CATEGORY_NAME)
-    }
 
-    override fun onSupportNavigateUp(): Boolean {
-        super.onBackPressed()
-        return false
     }
 
     private fun setupViewItems() {

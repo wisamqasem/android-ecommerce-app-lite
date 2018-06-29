@@ -39,6 +39,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         nav_view.setNavigationItemSelectedListener(this)
 
 
+
     }
 
     override fun onResume() {

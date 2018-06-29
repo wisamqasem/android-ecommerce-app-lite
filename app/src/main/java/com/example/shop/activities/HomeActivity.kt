@@ -14,8 +14,8 @@ import com.example.shop.contracts.CategoriesContract
 import com.example.shop.contracts.ProductsContract
 import com.example.shop.entities.Category
 import com.example.shop.entities.Product
-import com.example.shop.helpers.CenterZoomLayoutManager
 import com.example.shop.helpers.ItemDecoration
+import com.example.shop.helpers.Utils
 import com.example.shop.presenter.CategoriesPresenter
 import com.example.shop.presenter.ProductsPresenter
 import kotlinx.android.synthetic.main.activity_base.*
@@ -45,6 +45,8 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
     override fun onResume() {
         super.onResume()
         nav_view.menu.getItem(0).isChecked = true
+
+
     }
 
     private fun setupViewItems() {
@@ -66,7 +68,8 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
         products_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         products_recycler.adapter = productsAdapter
         products_recycler.scrollToPosition(0)
-        products_recycler.addItemDecoration(ItemDecoration(100, 0))
+
+        products_recycler.addItemDecoration(ItemDecoration(this))
 
 
         products_recycler_new.layoutManager = GridLayoutManager(this, 2)

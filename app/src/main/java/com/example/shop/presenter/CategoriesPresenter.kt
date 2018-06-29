@@ -14,7 +14,7 @@ class CategoriesPresenter(private val shopView: CategoriesContract.ICategoriesVi
         object : AsyncTask<Void, Void, ArrayList<Category>>() {
 
             override fun doInBackground(vararg voids: Void): ArrayList<Category> {
-                return Data.getCategories()
+                return Data.categories
             }
 
             override fun onPostExecute(categories: ArrayList<Category>) {
