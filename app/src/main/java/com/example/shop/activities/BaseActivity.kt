@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.app_bar_home.*
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private var defaultMenu: Menu? = null
+    var defaultMenu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

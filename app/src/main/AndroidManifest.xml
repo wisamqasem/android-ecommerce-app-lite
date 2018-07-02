@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -40,7 +41,19 @@
         <activity
             android:name=".activities.SearchActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.example.shop"
+                android:resource="@xml/searchable" />
+
+
+        </activity>
         <activity
             android:name=".activities.CreateAccountActivity"
             android:launchMode="singleTask"

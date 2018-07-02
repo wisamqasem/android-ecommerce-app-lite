@@ -1,11 +1,15 @@
 package com.example.shop.activities
 
+import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
-import android.view.View
+import android.support.v7.widget.SearchView
+import android.util.Log
+import android.view.Menu
+import com.example.shop.App
 import com.example.shop.R
 import com.example.shop.adapters.SearchAdapter
 import com.example.shop.contracts.ProductsContract
@@ -16,7 +20,8 @@ import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import java.util.*
 
-class SearchActivity : BaseActivity(), View.OnClickListener, ProductsContract.IProductsView, android.support.v7.widget.SearchView.OnQueryTextListener {
+
+class SearchActivity : BaseActivity(), ProductsContract.IProductsView, android.support.v7.widget.SearchView.OnQueryTextListener {
 
     private lateinit var products: ArrayList<Product>
     private lateinit var searchAdapter: SearchAdapter
@@ -28,6 +33,14 @@ class SearchActivity : BaseActivity(), View.OnClickListener, ProductsContract.IP
 
         setupViewItems()
         supportActionBar!!.title = getString(R.string.search)
+
+        handleIntent(intent)
+
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        handleIntent(intent!!)
     }
 
     override fun onResume() {
@@ -35,8 +48,17 @@ class SearchActivity : BaseActivity(), View.OnClickListener, ProductsContract.IP
         nav_view.menu.getItem(2).isChecked = true
     }
 
+    private fun handleIntent(intent: Intent) {
+
+        if (Intent.ACTION_SEARCH == intent.action) {
+            val query = intent.getStringExtra(SearchManager.QUERY)
+            //use the query to search your data somehow
+
+            Log.d("SEARCH:::", query);
+        }
+    }
+
     private fun setupViewItems() {
-        search_cancel_btn.setOnClickListener(this)
 
         products = ArrayList()
         productsPresenter = ProductsPresenter(this)
@@ -47,25 +69,31 @@ class SearchActivity : BaseActivity(), View.OnClickListener, ProductsContract.IP
         search_recycler_view.adapter = searchAdapter
         search_recycler_view.itemAnimator = DefaultItemAnimator()
 
-        search_view.setOnQueryTextListener(this)
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.home, menu)
+        this.defaultMenu = menu
+
+        setCount(App.instance.shoppingCartList.size.toString())
+        menu.findItem(R.id.search).isVisible = true
+
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = menu.findItem(R.id.search).actionView as SearchView
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
+
+        searchView.setOnQueryTextListener(this)
+        searchView.setIconifiedByDefault(true)
+
+        return true
+    }
 
     override fun productsLoaded(products: ArrayList<Product>) {
         this.products.addAll(products)
         searchAdapter.notifyDataSetChanged()
     }
 
-    override fun onClick(v: View?) {
-        when (v!!.id) {
-            search_cancel_btn.id -> {
-                finish()
-                overridePendingTransition(0, 0)
-                return
-            }
-        }
-    }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         return false

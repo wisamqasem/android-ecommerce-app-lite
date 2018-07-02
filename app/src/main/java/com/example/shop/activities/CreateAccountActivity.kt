@@ -22,6 +22,7 @@ class CreateAccountActivity : BaseActivity(), View.OnClickListener {
 
     private fun setupViewItems() {
         create_account_login_btn.setOnClickListener(this)
+        create_account_btn.setOnClickListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -30,7 +31,7 @@ class CreateAccountActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            create_new_account_btn.id -> {
+            create_account_btn.id -> {
 
                 return
             }

@@ -9,28 +9,35 @@
         android:id="@+id/row_shopping_cart_product_image"
         android:layout_width="80dp"
         android:layout_height="@dimen/row_shopping_cart_image_height"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        app:layout_constraintRight_toLeftOf="@id/ll" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/ll"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/row_category_margin"
         android:orientation="vertical"
+        android:paddingLeft="@dimen/margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/row_shopping_cart_product_image"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/row_shopping_cart_product_name"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:text="fsdfs"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            app:textAllCaps="true" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/row_shopping_cart_product_price"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:text="dsfsd" />
     </LinearLayout>
 
     <LinearLayout

@@ -5,11 +5,13 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="row_category_height">150dp</dimen>
+    <dimen name="row_category_height">120dp</dimen>
     <dimen name="row_product_height">300dp</dimen>
     <dimen name="row_product_home_height">200dp</dimen>
     <dimen name="row_shopping_cart_image_height">100dp</dimen>
     <dimen name="row_category_margin">10dp</dimen>
     <dimen name="gallery_height">300dp</dimen>
-    <dimen name="margin">10dp</dimen>
+    <dimen name="margin">6dp</dimen>
+    <dimen name="home_categories_image_size">67dp</dimen>
+    <dimen name="row_carousel_width">150dp</dimen>
 </resources>

@@ -25,7 +25,7 @@ class CategoriesActivity : BaseActivity(), CategoriesContract.ICategoriesView {
         layoutInflater.inflate(R.layout.activity_categories, content_container)
         setupViewItems()
         presenter.load()
-        supportActionBar!!.title = getString(R.string.instamobile)
+        supportActionBar!!.title = getString(R.string.shop)
     }
 
     override fun onResume() {

@@ -7,15 +7,15 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.example.shop.R
+import com.example.shop.adapters.CarouselProductsAdapter
 import com.example.shop.adapters.HomeCategoriesAdapter
 import com.example.shop.adapters.HomeProductsAdapter
-import com.example.shop.adapters.ProductsAdapter
 import com.example.shop.contracts.CategoriesContract
 import com.example.shop.contracts.ProductsContract
 import com.example.shop.entities.Category
 import com.example.shop.entities.Product
 import com.example.shop.helpers.ItemDecoration
-import com.example.shop.helpers.Utils
+import com.example.shop.helpers.ItemOffsetDecoration
 import com.example.shop.presenter.CategoriesPresenter
 import com.example.shop.presenter.ProductsPresenter
 import kotlinx.android.synthetic.main.activity_base.*
@@ -27,7 +27,8 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
 
 
     private lateinit var products: ArrayList<Product>
-    private lateinit var productsAdapter: ProductsAdapter
+    private lateinit var productsAdapter: HomeProductsAdapter
+    private lateinit var carouselProductsAdapter: CarouselProductsAdapter
     private lateinit var productsPresenter: ProductsPresenter
 
     private lateinit var categories: ArrayList<Category>
@@ -65,15 +66,18 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
         categoriesPresenter.load()
 
         productsAdapter = HomeProductsAdapter(this, this.products)
-        products_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        products_recycler.adapter = productsAdapter
-        products_recycler.scrollToPosition(0)
+        carouselProductsAdapter = CarouselProductsAdapter(this, this.products)
 
-        products_recycler.addItemDecoration(ItemDecoration(this))
+        products_carousel_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        products_carousel_recycler.adapter = carouselProductsAdapter
+        products_carousel_recycler.scrollToPosition(0)
+
+        products_carousel_recycler.addItemDecoration(ItemDecoration(this))
 
 
         products_recycler_new.layoutManager = GridLayoutManager(this, 2)
         products_recycler_new.adapter = productsAdapter
+        products_recycler_new.addItemDecoration(ItemOffsetDecoration(this, R.dimen.margin))
         products_recycler_new.isNestedScrollingEnabled = false
 
 
@@ -91,12 +95,13 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
         }
 
         productsAdapter.notifyDataSetChanged()
+        carouselProductsAdapter.notifyDataSetChanged()
     }
 
 
     override fun categoriesLoaded(categories: ArrayList<Category>) {
         this.categories.addAll(categories)
-        categoriesAdapter.notifyDataSetChanged();
+        categoriesAdapter.notifyDataSetChanged()
     }
 
     override fun onClick(v: View?) {

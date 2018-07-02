@@ -31,7 +31,8 @@
             style="@style/Instamobile.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username_or_e_mail" />
+            android:hint="@string/username_or_e_mail"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
 
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/login_password_input"
@@ -39,7 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/login_btn"
