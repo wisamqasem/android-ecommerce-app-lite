@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="@dimen/margin">
+    android:padding="@dimen/margin">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -16,7 +16,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/product_image"
-            android:gravity="center"
             android:textColor="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/product_image"
@@ -27,10 +26,7 @@
             android:id="@+id/product_image"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/margin"
-            android:layout_marginRight="@dimen/margin"
-            android:scaleType="centerCrop" />
+            android:layout_margin="@dimen/margin"/>
 
 
         <android.support.v7.widget.AppCompatTextView

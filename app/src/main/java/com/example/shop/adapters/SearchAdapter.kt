@@ -8,7 +8,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import com.example.shop.R
 import com.example.shop.entities.Product
-import com.example.shop.helpers.RoundedCornersTransformation
+import com.example.shop.helpers.RoundedTransformation
 import com.example.shop.helpers.SearchFilter
 import com.squareup.picasso.Picasso
 
@@ -17,6 +17,7 @@ open class SearchAdapter(context: Context, products: ArrayList<Product>) : Produ
 
     private var filterList: ArrayList<Product> = products
     private var filter: SearchFilter? = null
+    var imageSize = 300;
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,7 +26,7 @@ open class SearchAdapter(context: Context, products: ArrayList<Product>) : Produ
 
 
     override fun loadImage(currentItem: Product, image: AppCompatImageView) {
-        Picasso.get().load(currentItem.imageUrl).into(image)
+        Picasso.get().load(currentItem.imageUrl).transform(RoundedTransformation(15, 0)).resize(imageSize, imageSize).centerCrop().into(image)
     }
 
 

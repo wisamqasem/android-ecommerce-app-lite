@@ -72,19 +72,25 @@ class SearchActivity : BaseActivity(), ProductsContract.IProductsView, android.s
 
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        return super.onPrepareOptionsMenu(menu)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.home, menu)
         this.defaultMenu = menu
 
         setCount(App.instance.shoppingCartList.size.toString())
         menu.findItem(R.id.search).isVisible = true
+        menu.findItem(R.id.search).expandActionView()
+
 
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView = menu.findItem(R.id.search).actionView as SearchView
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
 
         searchView.setOnQueryTextListener(this)
-        searchView.setIconifiedByDefault(true)
+        searchView.requestFocus();
 
         return true
     }

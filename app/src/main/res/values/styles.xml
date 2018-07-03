@@ -45,4 +45,6 @@
     <style name="Toolbar.Title" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textStyle">normal</item>
     </style>
+
+
 </resources>
