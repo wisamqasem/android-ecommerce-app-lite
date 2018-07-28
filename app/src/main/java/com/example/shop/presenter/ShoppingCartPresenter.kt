@@ -9,7 +9,7 @@ import java.util.*
 class ShoppingCartPresenter(private val shoppingCartView: ShoppingCartContract.IShoppingCartView) : ShoppingCartContract.IShoppingCartPresenter {
 
 
-    public var sum :Int = 0;
+    var sum :Int = 0;
 
     override fun load() {
         object : AsyncTask<Void, Void, ArrayList<Product>>() {
