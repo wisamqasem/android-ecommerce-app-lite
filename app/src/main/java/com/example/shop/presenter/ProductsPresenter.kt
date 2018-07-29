@@ -6,13 +6,13 @@ import com.example.shop.contracts.ProductsContract
 import com.example.shop.entities.Product
 import java.util.*
 
-class ProductsPresenter(private val productsView: ProductsContract.IProductsView) : ProductsContract.IProductsPresenter {
+class ProductsPresenter(private val productsView: ProductsContract.IProductsView, val products: ArrayList<Product>) : ProductsContract.IProductsPresenter {
 
     override fun load() {
         object : AsyncTask<Void, Void, ArrayList<Product>>() {
 
             override fun doInBackground(vararg voids: Void): ArrayList<Product> {
-                return App.instance.getProducts()
+                return products
             }
 
             override fun onPostExecute(products: ArrayList<Product>) {

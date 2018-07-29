@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import com.example.shop.App
 import com.example.shop.R
 import com.example.shop.adapters.CarouselProductsAdapter
 import com.example.shop.adapters.HomeCategoriesAdapter
@@ -27,9 +28,11 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
 
 
     private lateinit var products: ArrayList<Product>
+    private lateinit var gridProducts: ArrayList<Product>
     private lateinit var productsAdapter: HomeProductsAdapter
     private lateinit var carouselProductsAdapter: CarouselProductsAdapter
     private lateinit var productsPresenter: ProductsPresenter
+    private lateinit var gridProductsPresenter: ProductsPresenter
 
     private lateinit var categories: ArrayList<Category>
     private lateinit var categoriesAdapter: HomeCategoriesAdapter
@@ -52,8 +55,13 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
 
     private fun setupViewItems() {
         products = ArrayList(4)
-        productsPresenter = ProductsPresenter(this)
+        gridProducts = ArrayList(4)
+
+        productsPresenter = ProductsPresenter(this, App.instance.getProducts())
         productsPresenter.load()
+
+        gridProductsPresenter = ProductsPresenter(this, App.instance.getHomeGridProducts())
+        gridProductsPresenter.load()
 
         var viewManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         categories = ArrayList()
@@ -65,7 +73,7 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
         categoriesPresenter = CategoriesPresenter(this)
         categoriesPresenter.load()
 
-        productsAdapter = HomeProductsAdapter(this, this.products)
+        productsAdapter = HomeProductsAdapter(this, this.gridProducts)
         carouselProductsAdapter = CarouselProductsAdapter(this, this.products)
 
         products_carousel_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -88,8 +96,12 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
     }
 
     override fun productsLoaded(products: ArrayList<Product>) {
-        products.forEach() {
-            if (this.products.size < 4) {
+        if (products.size == 4) {
+            products.forEach() {
+                this.gridProducts.add(it)
+            }
+        } else {
+            products.forEach() {
                 this.products.add(it)
             }
         }
@@ -107,7 +119,7 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
     override fun onClick(v: View?) {
         when (v!!.id) {
             view_all_products_btn.id -> ProductsActivity.open(this, "Dresses");
-            view_collection_btn.id -> ProductsActivity.open(this, "Woman Watches");
+            view_collection_btn.id -> ProductsActivity.open(this, "Women Watches");
             search_btn.id -> SearchActivity.open(this);
         }
 

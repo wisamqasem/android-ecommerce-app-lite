@@ -61,7 +61,7 @@ class SearchActivity : BaseActivity(), ProductsContract.IProductsView, android.s
     private fun setupViewItems() {
 
         products = ArrayList()
-        productsPresenter = ProductsPresenter(this)
+        productsPresenter = ProductsPresenter(this, App.instance.getProducts())
         productsPresenter.load()
 
         searchAdapter = SearchAdapter(this, this.products)
