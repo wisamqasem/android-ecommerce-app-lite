@@ -55,7 +55,7 @@ class ShoppingCartActivity : BaseActivity(), ShoppingCartContract.IShoppingCartV
 
     override fun shoppingCartLoaded(products: ArrayList<Product>) {
         this.products.addAll(products)
-        shopping_cart_items_number.text = getString(R.string._items, products.size)
+        //shopping_cart_items_number.text = getString(R.string._items, products.size)
         shopping_cart_subtotal.text = getString(R.string.subtotal, presenter.sum.toString())
         this.shopping_cart_recycler.adapter.notifyDataSetChanged()
     }

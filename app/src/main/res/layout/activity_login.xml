@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/margin"
             android:padding="@dimen/margin"
-            android:text="@string/instamobile"
+            android:text="wisam"
             android:textAllCaps="true"
             android:textSize="40sp"
             android:textStyle="bold" />
