@@ -76,11 +76,11 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
         productsAdapter = HomeProductsAdapter(this, this.gridProducts)
         carouselProductsAdapter = CarouselProductsAdapter(this, this.products)
 
-        products_carousel_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        products_carousel_recycler.adapter = carouselProductsAdapter
-        products_carousel_recycler.scrollToPosition(0)
+       // products_carousel_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+      //  products_carousel_recycler.adapter = carouselProductsAdapter
+      //  products_carousel_recycler.scrollToPosition(0)
 
-        products_carousel_recycler.addItemDecoration(ItemDecoration(this))
+      //  products_carousel_recycler.addItemDecoration(ItemDecoration(this))
 
 
         products_recycler_new.layoutManager = GridLayoutManager(this, 2)
