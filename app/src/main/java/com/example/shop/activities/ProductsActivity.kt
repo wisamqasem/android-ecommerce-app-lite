@@ -46,6 +46,9 @@ class ProductsActivity : BaseActivity(), ProductsContract.IProductsView {
         productsAdapter.notifyDataSetChanged()
     }
 
+
+
+    //open function to open this activity
     companion object {
         private const val KEY_CATEGORY_NAME = "category_name"
         fun open(context: Context, name: String) {

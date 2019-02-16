@@ -110,6 +110,7 @@ class SearchActivity : BaseActivity(), ProductsContract.IProductsView, android.s
         return false
     }
 
+    //open function to open this activity from any activity else
     companion object {
         fun open(context: Context) {
             val intent = Intent(context, SearchActivity::class.java)

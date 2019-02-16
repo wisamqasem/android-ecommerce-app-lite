@@ -29,15 +29,19 @@ class CreateAccountActivity : BaseActivity(), View.OnClickListener {
         return false
     }
 
+
+    //Multiple click listeners on buttons
     override fun onClick(v: View?) {
         when (v!!.id) {
             create_account_btn.id -> {
-
+//write you code here...
                 return
             }
 
             create_account_login_btn.id -> {
                 LoginActivity.open(this)
+
+
                 return
             }
         }

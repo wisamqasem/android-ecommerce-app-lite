@@ -70,6 +70,8 @@ class ShoppingCartActivity : BaseActivity(), ShoppingCartContract.IShoppingCartV
         }
     }
 
+
+    //open function to open this activity from any activity else
     companion object {
         fun open(context: Context) {
             val intent = Intent(context, ShoppingCartActivity::class.java)

@@ -59,6 +59,7 @@ class CategoriesActivity : BaseActivity(), CategoriesContract.ICategoriesView {
         viewAdapter.notifyDataSetChanged();
     }
 
+    //open function to open the activity
     companion object {
         fun open(context: Context) {
             val intent = Intent(context, CategoriesActivity::class.java)

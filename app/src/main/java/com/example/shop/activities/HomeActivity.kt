@@ -126,7 +126,7 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
         this.overridePendingTransition(0, 0)
     }
 
-
+//open function to open the activity
     companion object {
         fun open(context: Context) {
             val intent = Intent(context, HomeActivity::class.java)
