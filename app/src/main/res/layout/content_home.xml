@@ -22,6 +22,7 @@
             android:textAllCaps="false"
             android:theme="@style/Instamobile.Search.Button" />
 
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/categories_recycler"
             android:layout_width="match_parent"

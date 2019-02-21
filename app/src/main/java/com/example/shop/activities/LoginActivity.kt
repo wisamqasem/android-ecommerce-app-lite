@@ -8,9 +8,11 @@ import android.view.View
 import com.example.shop.R
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.app_bar_home.*
+import android.widget.Toast
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
-//val b = findViewById(R.id.login_btn)
+    //val b = findViewById(R.id.login_btn)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_login, content_container)
@@ -19,11 +21,14 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         supportActionBar!!.title = getString(R.string.login)
     }
 
-  //  b.setOnClickListener{toast("clicked")}
+
 
     private fun setupViewItems() {
         create_new_account_btn.setOnClickListener(this)
-     //   login_btn.setOnClickListener(this)
+        login_btn.setOnClickListener(this)
+
+
+        //   login_btn.setOnClickListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -36,6 +41,11 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!.id) {
 
+            R.id.login_btn -> {
+              //  Toast.makeText(this, , Toast.LENGTH_SHORT).show()
+                //  HomeActivity.open(this)
+                return
+            }
             create_new_account_btn.id -> {
                 CreateAccountActivity.open(this)//there is a function in the CreateAccountAcivity named open used to open creataccount activity
                 return
@@ -44,7 +54,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
         }
     }
-
 
 
     companion object {

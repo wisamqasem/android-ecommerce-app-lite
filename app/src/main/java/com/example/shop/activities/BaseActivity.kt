@@ -8,13 +8,17 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.example.shop.App
 import com.example.shop.R
 import com.example.shop.helpers.CountDrawable
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.app_bar_home.*
+import okhttp3.*
+import java.io.IOException
 
 
 @SuppressLint("Registered")
@@ -39,7 +43,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         nav_view.setNavigationItemSelectedListener(this)
 
 
-
+fetchJson()
     }
 
     override fun onResume() {
@@ -110,6 +114,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         return true
     }
 
+
     fun setCount(count: String) {
         val menuItem: MenuItem = defaultMenu!!.findItem(R.id.action_cart)
         val icon: LayerDrawable = menuItem.icon as LayerDrawable
@@ -127,4 +132,58 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         icon.mutate()
         icon.setDrawableByLayerId(R.id.ic_cart_count, badge)
     }
+
+
 }
+ fun fetchJson() {
+        println("Attempting to Fetch JSON")
+
+        val url = "https://ppudatabase.000webhostapp.com"
+
+
+
+
+        val request = Request.Builder().url(url).build()
+
+        val client = OkHttpClient()
+        client.newCall(request).enqueue(object: Callback {
+            override fun onResponse(call: Call?, response: Response?) {
+                val body = response?.body()?.string()
+                println(body)
+              //  Toast.makeText(this , body, Toast.LENGTH_SHORT).show()
+
+                val gson = GsonBuilder().create()
+
+               val users = gson.fromJson(body, Array<User>::class.java) as Array<User>
+
+                for(user in users){
+                    
+                    Log.e("HIII",user.first_name)
+                }
+          /*      runOnUiThread {
+                   recyclerView_main.adapter = MainAdapter(homeFeed)
+                }*/
+            }
+
+            override fun onFailure(call: Call?, e: IOException?) {
+                println("Failed to execute request")
+            }
+        })
+
+    }
+
+
+
+ class User(val id : Int, val first_name : String, val last_name : String, val city : String,
+             val address: String, val phone: String,val email :String,val password : String
+            ,val credit_card:String,val card_exp_month:Int,val card_exp_year:Int,
+            val credit_card_type_id	:Int,val BD_month:Int,val BD_day:Int,
+            val BD_year:Int,val image:String,val is_admin :String,val ranking :String,val is_login :String)
+
+//class HomeFeed(val users: List<user>)
+
+//fun check(email : String,password : String){
+//
+//
+//
+//}

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.widget.Button
 import com.example.shop.App
 import com.example.shop.R
 import com.example.shop.adapters.CarouselProductsAdapter
@@ -44,6 +45,7 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
         layoutInflater.inflate(R.layout.content_home, content_container)
         setupViewItems()
         supportActionBar!!.title = getString(R.string.instamobile)
+
     }
 
     override fun onResume() {
