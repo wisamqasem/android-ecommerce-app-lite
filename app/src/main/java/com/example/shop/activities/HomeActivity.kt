@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.widget.Button
 import com.example.shop.App
 import com.example.shop.R
 import com.example.shop.adapters.CarouselProductsAdapter
@@ -16,7 +15,6 @@ import com.example.shop.contracts.CategoriesContract
 import com.example.shop.contracts.ProductsContract
 import com.example.shop.entities.Category
 import com.example.shop.entities.Product
-import com.example.shop.helpers.ItemDecoration
 import com.example.shop.helpers.ItemOffsetDecoration
 import com.example.shop.presenter.CategoriesPresenter
 import com.example.shop.presenter.ProductsPresenter

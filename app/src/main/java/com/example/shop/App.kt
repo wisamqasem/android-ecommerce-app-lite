@@ -1,12 +1,13 @@
 package com.example.shop
 
 import android.app.Application
+import com.example.shop.activities.User
 import com.example.shop.entities.Product
 
 class App : Application() {
 
     lateinit var shoppingCartList: ArrayList<Product>
-
+ lateinit var users:Array<User>
     override fun onCreate() {
         super.onCreate()
         shoppingCartList = ArrayList()

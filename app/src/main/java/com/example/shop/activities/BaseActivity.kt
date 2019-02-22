@@ -8,7 +8,6 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.example.shop.App
@@ -22,9 +21,11 @@ import java.io.IOException
 
 
 @SuppressLint("Registered")
+var aa=App()
 open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     var defaultMenu: Menu? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -136,33 +137,14 @@ fetchJson()
 
 }
  fun fetchJson() {
-        println("Attempting to Fetch JSON")
-
-        val url = "https://ppudatabase.000webhostapp.com"
-
-
-
-
-        val request = Request.Builder().url(url).build()
-
+        val request = Request.Builder().url("https://ppudatabase.000webhostapp.com").build()
         val client = OkHttpClient()
         client.newCall(request).enqueue(object: Callback {
             override fun onResponse(call: Call?, response: Response?) {
                 val body = response?.body()?.string()
                 println(body)
-              //  Toast.makeText(this , body, Toast.LENGTH_SHORT).show()
-
                 val gson = GsonBuilder().create()
-
-               val users = gson.fromJson(body, Array<User>::class.java) as Array<User>
-
-                for(user in users){
-                    
-                    Log.e("HIII",user.first_name)
-                }
-          /*      runOnUiThread {
-                   recyclerView_main.adapter = MainAdapter(homeFeed)
-                }*/
+               aa.users  = gson.fromJson(body, Array<User>::class.java) as Array<User>
             }
 
             override fun onFailure(call: Call?, e: IOException?) {
@@ -173,6 +155,16 @@ fetchJson()
     }
 
 
+ fun check(name:String,password: String):Boolean{
+       for (user in aa.users ){
+           if(name==user.email && password==user.password){
+               return  true
+           }}
+        return false
+    }
+
+
+
 
  class User(val id : Int, val first_name : String, val last_name : String, val city : String,
              val address: String, val phone: String,val email :String,val password : String
@@ -180,10 +172,3 @@ fetchJson()
             val credit_card_type_id	:Int,val BD_month:Int,val BD_day:Int,
             val BD_year:Int,val image:String,val is_admin :String,val ranking :String,val is_login :String)
 
-//class HomeFeed(val users: List<user>)
-
-//fun check(email : String,password : String){
-//
-//
-//
-//}

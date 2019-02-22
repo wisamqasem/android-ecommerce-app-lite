@@ -26,11 +26,19 @@
             android:textSize="20sp" />
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/create_account_full_name_input"
+            android:id="@+id/create_account_first_name_input"
             style="@style/Instamobile.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/full_name"
+            android:hint="first name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/create_account_last_name_input"
+            style="@style/Instamobile.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="last name"
             android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
 
         <android.support.v7.widget.AppCompatEditText
@@ -39,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
-            android:text="@string/e_mail_address"
+            android:hint="E-mail address"
             android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
 
         <android.support.v7.widget.AppCompatEditText
@@ -48,7 +56,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
-            android:text="@string/password"
+           android:hint="password"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/create_account_phone_input"
+            style="@style/Instamobile.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="phone number"
+            android:inputType="number"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/create_account_city_input"
+            style="@style/Instamobile.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="city"
+
             android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
 
         <android.support.v7.widget.AppCompatButton
