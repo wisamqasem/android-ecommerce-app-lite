@@ -46,7 +46,7 @@
             style="@style/Instamobile.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin"
+
             android:hint="E-mail address"
             android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
 
@@ -55,8 +55,18 @@
             style="@style/Instamobile.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin"
+
            android:hint="password"
+            android:inputType="textPassword"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/create_account_password_again_input"
+            style="@style/Instamobile.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="confirm password"
+            android:inputType="textPassword"
             android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/create_account_phone_input"
@@ -66,21 +76,27 @@
             android:hint="phone number"
             android:inputType="number"
             android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
-        <android.support.v7.widget.AppCompatEditText
+
+        <TextView
             android:id="@+id/create_account_city_input"
-            style="@style/Instamobile.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="city : "
+            />
+        <Spinner
+            android:id="@+id/sp_option"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="city"
+            android:padding="20dp"/>
 
-            android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/create_account_btn"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin"
+
             android:text="@string/create_account"
             android:textColor="@android:color/white"
             android:theme="@style/Instamobile.Button" />
@@ -90,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin"
+
             android:background="@android:color/transparent"
             android:text="@string/already_have_an_account_login"
             android:textAllCaps="false"

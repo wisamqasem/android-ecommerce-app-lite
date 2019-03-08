@@ -1,6 +1,7 @@
 package com.example.shop
 
 import android.app.Application
+import android.content.SharedPreferences
 import com.example.shop.activities.User
 import com.example.shop.entities.Product
 
@@ -8,10 +9,13 @@ class App : Application() {
 
     lateinit var shoppingCartList: ArrayList<Product>
  lateinit var users:Array<User>
+    lateinit var mypreference : SharedPreferences
+    lateinit var  editor:SharedPreferences.Editor
     override fun onCreate() {
         super.onCreate()
         shoppingCartList = ArrayList()
         instance = this
+
     }
 
     fun getProducts(): java.util.ArrayList<Product> {

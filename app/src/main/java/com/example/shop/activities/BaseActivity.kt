@@ -32,6 +32,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         setContentView(R.layout.activity_base)
         setSupportActionBar(toolbar)
 
+
 //        fab.setOnClickListener { view ->
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                    .setAction("Action", null).show()
@@ -44,7 +45,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         nav_view.setNavigationItemSelectedListener(this)
 
 
-fetchJson()
+getdata("https://ppudatabase.000webhostapp.com")
     }
 
     override fun onResume() {
@@ -107,6 +108,9 @@ fetchJson()
             R.id.nav_my_account -> {
                 LoginActivity.open(this)
             }
+            R.id.nav_sell ->{
+                SellActivity.open(this)
+            }
         }
 
         overridePendingTransition(0, 0)
@@ -133,11 +137,36 @@ fetchJson()
         icon.mutate()
         icon.setDrawableByLayerId(R.id.ic_cart_count, badge)
     }
+    fun check(name:String,password: String):Boolean{
+        val mypreference = mypref(this)
+        for (user in aa.users ){
+            if(name==user.email && password==user.password){
+                mypreference.setstr("id",user.id.toString())
+                mypreference.setstr("first_name",user.first_name.toString())
+                mypreference.setstr("last_name",user.last_name.toString())
+                mypreference.setstr("city",user.city.toString())
+//                mypreference.setstr("address",user.address.toString())
+  //              mypreference.setstr("phone",user.phone.toString())
+                mypreference.setstr("email",user.email.toString())
+                mypreference.setstr("password",user.password.toString())
+    //            mypreference.setstr("image",user.image.toString())
 
+
+
+
+                return  true
+            }
+
+
+        }
+        return false
+    }
 
 }
- fun fetchJson() {
-        val request = Request.Builder().url("https://ppudatabase.000webhostapp.com").build()
+
+ fun getdata(url:String) {
+     //"https://ppudatabase.000webhostapp.com"
+        val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue(object: Callback {
             override fun onResponse(call: Call?, response: Response?) {
@@ -153,15 +182,29 @@ fetchJson()
         })
 
     }
+fun setdata(url:String,formBody: FormBody){
+
+    val request = Request.Builder().url(url) .post(formBody).build()
+
+    val client = OkHttpClient()
+    client.newCall(request).enqueue(object: Callback {
+        override fun onResponse(call: Call?, response: Response?) {
+            val body = response?.body()?.string()
+
+//
+        }
+
+        override fun onFailure(call: Call?, e: IOException?) {
+            println("Failed to execute request")
+        }
+    })
 
 
- fun check(name:String,password: String):Boolean{
-       for (user in aa.users ){
-           if(name==user.email && password==user.password){
-               return  true
-           }}
-        return false
-    }
+
+
+}
+
+
 
 
 

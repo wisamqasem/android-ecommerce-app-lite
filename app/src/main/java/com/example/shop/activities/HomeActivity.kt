@@ -37,19 +37,24 @@ class HomeActivity : BaseActivity(), ProductsContract.IProductsView, CategoriesC
     private lateinit var categoriesAdapter: HomeCategoriesAdapter
     private lateinit var categoriesPresenter: CategoriesPresenter
 
+val app=App()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.content_home, content_container)
         setupViewItems()
-        supportActionBar!!.title = getString(R.string.instamobile)
+        val mypreference = mypref(this)
+
+        supportActionBar!!.title = mypreference.getstr("username")
+       // supportActionBar!!.title ="wen"
 
     }
 
     override fun onResume() {
         super.onResume()
         nav_view.menu.getItem(0).isChecked = true
-
+        val mypreference = mypref(this)
+        supportActionBar!!.title = mypreference.getstr("username")
 
     }
 

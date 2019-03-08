@@ -6,18 +6,25 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
+import com.example.shop.App
 import com.example.shop.R
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
 
+
+
 class LoginActivity : BaseActivity(), View.OnClickListener {
     //val b = findViewById(R.id.login_btn)
+
+  var app=App()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_login, content_container)
         setupViewItems()
+
 
         supportActionBar!!.title = getString(R.string.login)
     }
@@ -48,8 +55,15 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             R.id.login_btn -> {
 if(check(username.text.toString(),password.text.toString())){
               //  Toast.makeText(this, , Toast.LENGTH_SHORT).show()
+    val mypreference = mypref(this)
+    mypreference.setstr("username",username.text.toString())
              HomeActivity.open(this)
-                }
+   // Toast.makeText(this,"login successfully" , Toast.LENGTH_SHORT).show()
+
+
+
+  //  supportActionBar!!.title="wer"
+                }else Toast.makeText(this,"email or password is wrong" , Toast.LENGTH_SHORT).show()
                 return
             }
             create_new_account_btn.id -> {
