@@ -57,6 +57,7 @@ if(check(username.text.toString(),password.text.toString())){
               //  Toast.makeText(this, , Toast.LENGTH_SHORT).show()
     val mypreference = mypref(this)
     mypreference.setstr("username",username.text.toString())
+
              HomeActivity.open(this)
    // Toast.makeText(this,"login successfully" , Toast.LENGTH_SHORT).show()
 

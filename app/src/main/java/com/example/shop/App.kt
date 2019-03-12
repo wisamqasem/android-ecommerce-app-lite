@@ -9,7 +9,8 @@ class App : Application() {
 
     lateinit var shoppingCartList: ArrayList<Product>
  lateinit var users:Array<User>
-    lateinit var mypreference : SharedPreferences
+
+
     lateinit var  editor:SharedPreferences.Editor
     override fun onCreate() {
         super.onCreate()

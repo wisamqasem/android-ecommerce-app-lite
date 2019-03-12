@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.shop"
-    >
-
-
+    package="com.example.shop">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -65,7 +62,13 @@
             android:name=".activities.ShoppingCartActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.SellActivity"></activity>
+        <activity android:name=".activities.SellActivity" />
+        <activity android:name=".messges.chatlog" />
+        <activity android:name=".messges.ChatMessage" />
+        <activity android:name=".views.LatestMessageRow" />
+        <activity android:name=".messges.NewMessages" />
+        <activity android:name=".messges.LatestMesages"></activity>
+
     </application>
 
 </manifest>

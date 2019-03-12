@@ -1,9 +1,11 @@
 package com.example.shop.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -13,7 +15,9 @@ import android.view.MenuItem
 import com.example.shop.App
 import com.example.shop.R
 import com.example.shop.helpers.CountDrawable
+import com.example.shop.messges.LatestMesages
 import com.google.gson.GsonBuilder
+import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import okhttp3.*
@@ -22,6 +26,7 @@ import java.io.IOException
 
 @SuppressLint("Registered")
 var aa=App()
+
 open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     var defaultMenu: Menu? = null
@@ -45,7 +50,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         nav_view.setNavigationItemSelectedListener(this)
 
 
-getdata("https://ppudatabase.000webhostapp.com")
+getdata("https://ppudatabase.000webhostapp.com","users")
     }
 
     override fun onResume() {
@@ -111,6 +116,10 @@ getdata("https://ppudatabase.000webhostapp.com")
             R.id.nav_sell ->{
                 SellActivity.open(this)
             }
+            R.id.nav_message ->{
+                val intent = Intent(this, LatestMesages::class.java)
+                this.startActivity(intent)
+            }
         }
 
         overridePendingTransition(0, 0)
@@ -137,6 +146,7 @@ getdata("https://ppudatabase.000webhostapp.com")
         icon.mutate()
         icon.setDrawableByLayerId(R.id.ic_cart_count, badge)
     }
+
     fun check(name:String,password: String):Boolean{
         val mypreference = mypref(this)
         for (user in aa.users ){
@@ -164,7 +174,7 @@ getdata("https://ppudatabase.000webhostapp.com")
 
 }
 
- fun getdata(url:String) {
+ fun getdata(url:String,name:String) {
      //"https://ppudatabase.000webhostapp.com"
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
@@ -173,8 +183,58 @@ getdata("https://ppudatabase.000webhostapp.com")
                 val body = response?.body()?.string()
                 println(body)
                 val gson = GsonBuilder().create()
+                if(name=="users"){
                aa.users  = gson.fromJson(body, Array<User>::class.java) as Array<User>
-            }
+for (user in aa.users) {
+    if (user.email == null)
+        user.email = ""
+    if (user.password == null)
+        user.password = ""
+    if (user.first_name == null)
+        user.first_name = ""
+    if (user.BD_day == null)
+        user.BD_day = 0
+    if (user.BD_month == null)
+        user.BD_month = 0
+    if (user.BD_year == null)
+        user.BD_year = 0
+    if (user.address == null)
+        user.address = ""
+    if (user.card_exp_month == null)
+        user.card_exp_month = 0
+    if (user.card_exp_year == null)
+        user.card_exp_year = 0
+    if (user.city == null)
+        user.city = ""
+    if (user.credit_card == null)
+        user.credit_card = ""
+    if (user.credit_card_type_id == null)
+        user.credit_card_type_id = 0
+    if (user.id == null)
+        user.id = ""
+    if (user.image == null)
+        user.image = ""
+    if (user.is_admin == null)
+        user.is_admin = ""
+    if (user.is_login == null)
+        user.is_login = ""
+    if (user.phone == null)
+        user.phone = ""
+    if (user.ranking == null)
+        user.ranking = ""
+}
+
+
+}//end if name is users
+//                else if(name=="products"){
+//                    products  = gson.fromJson(body, Array<User>::class.java) as Array<User>
+//
+//
+//
+//
+//
+//                }
+           }
 
             override fun onFailure(call: Call?, e: IOException?) {
                 println("Failed to execute request")
@@ -182,6 +242,12 @@ getdata("https://ppudatabase.000webhostapp.com")
         })
 
     }
+fun getUsers():Array<User>{
+
+
+    return  aa.users
+}
+
 fun setdata(url:String,formBody: FormBody){
 
     val request = Request.Builder().url(url) .post(formBody).build()
@@ -208,10 +274,12 @@ fun setdata(url:String,formBody: FormBody){
 
 
 
-
- class User(val id : Int, val first_name : String, val last_name : String, val city : String,
-             val address: String, val phone: String,val email :String,val password : String
-            ,val credit_card:String,val card_exp_month:Int,val card_exp_year:Int,
-            val credit_card_type_id	:Int,val BD_month:Int,val BD_day:Int,
-            val BD_year:Int,val image:String,val is_admin :String,val ranking :String,val is_login :String)
+@Parcelize
+ class User(var id : String, var first_name : String, var last_name : String, var city : String,
+             var address: String, var phone: String,var email :String,var password : String
+            ,var credit_card:String,var card_exp_month:Int,var card_exp_year:Int,
+            var credit_card_type_id	:Int,var BD_month:Int,var BD_day:Int,
+            var BD_year:Int,var image:String,var is_admin :String,var ranking :String,var is_login :String) : Parcelable {
+    constructor() : this("", "", "","","","","","","",0,0,0,0,0,0,"","","","")
+}
 

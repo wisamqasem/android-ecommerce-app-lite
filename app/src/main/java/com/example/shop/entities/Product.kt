@@ -4,6 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class Product() : Parcelable {
+
     var id: Int = 0
     lateinit var name: String
     var price: Int = 0
