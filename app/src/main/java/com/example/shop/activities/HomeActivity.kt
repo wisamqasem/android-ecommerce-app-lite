@@ -42,6 +42,7 @@ val app=App()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.content_home, content_container)
+        getdata("https://ppudatabase.000webhostapp.com/products.php","products")
         setupViewItems()
         val mypreference = mypref(this)
 
@@ -61,12 +62,16 @@ val app=App()
     private fun setupViewItems() {
         products = ArrayList(4)
         gridProducts = ArrayList(4)
+var productss : Array<Product> = getProducts()
 
-        productsPresenter = ProductsPresenter(this, App.instance.getProducts())
-        productsPresenter.load()
 
-        gridProductsPresenter = ProductsPresenter(this, App.instance.getHomeGridProducts())
-        gridProductsPresenter.load()
+   //     productsPresenter = ProductsPresenter(this, productss)
+   //     productsPresenter.load()
+
+
+        //products in home page
+    //    gridProductsPresenter = ProductsPresenter(this, App.instance.getHomeGridProducts())
+      //  gridProductsPresenter.load()
 
         var viewManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         categories = ArrayList()
@@ -100,7 +105,7 @@ val app=App()
 
     }
 
-    override fun productsLoaded(products: ArrayList<Product>) {
+    override fun productsLoaded(products: Array<Product>) {
         if (products.size == 4) {
             products.forEach() {
                 this.gridProducts.add(it)

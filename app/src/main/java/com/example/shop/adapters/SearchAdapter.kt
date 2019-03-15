@@ -26,7 +26,7 @@ open class SearchAdapter(context: Context, products: ArrayList<Product>) : Produ
 
 
     override fun loadImage(currentItem: Product, image: AppCompatImageView) {
-        Picasso.get().load(currentItem.imageUrl).transform(RoundedTransformation(15, 0)).resize(imageSize, imageSize).centerCrop().into(image)
+        Picasso.get().load(currentItem.image).transform(RoundedTransformation(15, 0)).resize(imageSize, imageSize).centerCrop().into(image)
     }
 
 

@@ -17,7 +17,7 @@ class SearchFilter(var adapter: SearchAdapter, private var filterList: ArrayList
             val filteredPlayers = ArrayList<Product>()
             for (i in 0 until filterList!!.size) {
                 //CHECK
-                if (filterList!![i].name.toUpperCase().contains(noSpaces.toString().toUpperCase())) {
+                if (filterList!![i].product_name.toUpperCase().contains(noSpaces.toString().toUpperCase())) {
                     //ADD PLAYER TO FILTERED PLAYERS
                     filteredPlayers.add(filterList!![i])
                 }

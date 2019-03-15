@@ -8,11 +8,9 @@ import android.view.View
 import android.widget.Toast
 import com.example.shop.App
 import com.example.shop.R
-import com.example.shop.R.string.price
 import com.example.shop.adapters.SlideGalleryAdapter
 import com.example.shop.entities.Product
 import kotlinx.android.synthetic.main.activity_product_details.*
-import me.relex.circleindicator.CircleIndicator
 
 
 
@@ -24,16 +22,16 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
 //        layoutInflater.inflate(R.layout.activity_product_details, content_container)
         setContentView(R.layout.activity_product_details)
-        product = intent.extras.getParcelable(KEY_PRODUCT)
+      //  product = intent.extras.getParcelable(KEY_PRODUCT)
         setupViewItems()
 
     }
 
     private fun setupViewItems() {
         slide_view_pager.adapter = SlideGalleryAdapter(this, product.gallery)
-        product_name.text = product.name
-        product_price.text = getString(price, product.price)
-        product_description.text = product.description
+        product_name.text = product.product_name
+        product_price.text = product.product_price.toString()
+        product_description.text = product.product_description
 
         indicator.setViewPager(slide_view_pager)
 
@@ -46,7 +44,7 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
 
         fun open(context: Context, product: Product) {
             val intent = Intent(context, ProductDetailsActivity::class.java)
-            intent.putExtra(KEY_PRODUCT, product)
+        //    intent.putExtra(KEY_PRODUCT, product)
             context.startActivity(intent)
         }
     }
@@ -59,7 +57,7 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             buy_now_btn.id -> {
-                if (!checkForExistingProduct(product.id)) {
+                if (!checkForExistingProduct(product.product_Id)) {
                     App.instance.shoppingCartList.add(product)
                     Toast.makeText(this, getString(R.string.product_added_to_cart), Toast.LENGTH_SHORT).show()
                     finish()
@@ -73,9 +71,9 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun checkForExistingProduct(productId: Int): Boolean {
+    private fun checkForExistingProduct(productId: String): Boolean {
         App.instance.shoppingCartList.forEach() {
-            if (it.id == productId) {
+            if (it.product_Id == productId) {
                 return true
             }
         }

@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import com.example.shop.App
 import com.example.shop.R
 import com.example.shop.adapters.ProductsAdapter
 import com.example.shop.contracts.ProductsContract
@@ -31,7 +30,7 @@ class ProductsActivity : BaseActivity(), ProductsContract.IProductsView {
 
     private fun setupViewItems() {
         products = ArrayList()
-        productsPresenter = ProductsPresenter(this, App.instance.getProducts())
+        productsPresenter = ProductsPresenter(this, getProducts())
         productsPresenter.load()
 
         productsAdapter = ProductsAdapter(this, this.products)
@@ -41,7 +40,7 @@ class ProductsActivity : BaseActivity(), ProductsContract.IProductsView {
     }
 
 
-    override fun productsLoaded(products: ArrayList<Product>) {
+    override fun productsLoaded(products: Array<Product>) {
         this.products.addAll(products)
         productsAdapter.notifyDataSetChanged()
     }

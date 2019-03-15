@@ -22,9 +22,10 @@ open class ShoppingCartAdapter(private val context: Context, private val product
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = products[position]
-        Picasso.get().load(currentItem.imageUrl).into(holder.image)
-        holder.price.text = context.getString(R.string.price, currentItem.price)
-        holder.name.text = currentItem.name
+        Picasso.get().load(currentItem.image).into(holder.image)
+      //  holder.price.text = context.getString(R.string.price, currentItem.price)
+        holder.price.text =  context.getString(R.string.price, currentItem.product_price)
+        holder.name.text = currentItem.product_name
 
     }
 

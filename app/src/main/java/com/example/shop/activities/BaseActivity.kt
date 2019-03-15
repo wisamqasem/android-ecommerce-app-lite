@@ -14,6 +14,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.shop.App
 import com.example.shop.R
+import com.example.shop.entities.Product
 import com.example.shop.helpers.CountDrawable
 import com.example.shop.messges.LatestMesages
 import com.google.gson.GsonBuilder
@@ -36,7 +37,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
         setSupportActionBar(toolbar)
-
+        var prod:Array<Product>
 
 //        fab.setOnClickListener { view ->
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -51,6 +52,8 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
 getdata("https://ppudatabase.000webhostapp.com","users")
+        getdata("https://ppudatabase.000webhostapp.com/products.php","products")
+
     }
 
     override fun onResume() {
@@ -172,6 +175,11 @@ getdata("https://ppudatabase.000webhostapp.com","users")
         return false
     }
 
+
+
+
+
+
 }
 
  fun getdata(url:String,name:String) {
@@ -226,14 +234,11 @@ for (user in aa.users) {
 
 
 }//end if name is users
-//                else if(name=="products"){
-//                    products  = gson.fromJson(body, Array<User>::class.java) as Array<User>
-//
-//
-//
-//
-//
-//                }
+                else if(name=="products"){
+                    println("done p")
+                  aa.products = gson.fromJson(body, Array<Product>::class.java) as Array<Product>
+
+                }
            }
 
             override fun onFailure(call: Call?, e: IOException?) {
@@ -243,10 +248,16 @@ for (user in aa.users) {
 
     }
 fun getUsers():Array<User>{
-
-
     return  aa.users
 }
+fun getProducts():Array<Product>{
+
+    getdata("https://ppudatabase.000webhostapp.com/products.php","products")
+    var  pp : Array<Product> = aa.products
+
+    return  pp
+}
+
 
 fun setdata(url:String,formBody: FormBody){
 

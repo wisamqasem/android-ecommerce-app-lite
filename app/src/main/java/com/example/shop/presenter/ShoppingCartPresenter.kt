@@ -17,7 +17,7 @@ class ShoppingCartPresenter(private val shoppingCartView: ShoppingCartContract.I
             override fun doInBackground(vararg voids: Void): ArrayList<Product> {
 
                 App.instance.shoppingCartList.forEach {
-                    sum = (sum + it.price)
+                    sum = (sum + it.product_price)
                 }
                 return App.instance.shoppingCartList
             }

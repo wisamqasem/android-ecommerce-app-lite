@@ -24,8 +24,8 @@ open class ProductsAdapter(private val context: Context, public var products: Ar
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = products[position]
         loadImage(currentItem,holder.image)
-        holder.price.text = context.getString(R.string.price, currentItem.price)
-        holder.name.text = currentItem.name
+        holder.price.text = context.getString(R.string.price, currentItem.product_price)
+        holder.name.text = currentItem.product_name
 
         holder.itemView.setOnClickListener {
             ProductDetailsActivity.open(context, currentItem)
@@ -34,7 +34,7 @@ open class ProductsAdapter(private val context: Context, public var products: Ar
     }
 
     open fun loadImage(currentItem: Product, image: AppCompatImageView) {
-        Picasso.get().load(currentItem.imageUrl).into(image)
+        Picasso.get().load(currentItem.image).into(image)
     }
 
     override fun getItemCount(): Int {

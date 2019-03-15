@@ -61,7 +61,7 @@ class SearchActivity : BaseActivity(), ProductsContract.IProductsView, android.s
     private fun setupViewItems() {
 
         products = ArrayList()
-        productsPresenter = ProductsPresenter(this, App.instance.getProducts())
+        productsPresenter = ProductsPresenter(this, getProducts())
         productsPresenter.load()
 
         searchAdapter = SearchAdapter(this, this.products)
@@ -95,7 +95,7 @@ class SearchActivity : BaseActivity(), ProductsContract.IProductsView, android.s
         return true
     }
 
-    override fun productsLoaded(products: ArrayList<Product>) {
+    override fun productsLoaded(products: Array<Product>) {
         this.products.addAll(products)
         searchAdapter.notifyDataSetChanged()
     }
